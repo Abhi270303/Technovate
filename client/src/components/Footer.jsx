@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="text-yellow md:text-2xl">
               Relief DAO
             </div>
-            <div className="text-yellow font-extralight md:text-xl">
+            <div className="text-lighttextGray font-extralight md:text-xl">
               Building Bridges in Times of Crisis
             </div>
           </div>

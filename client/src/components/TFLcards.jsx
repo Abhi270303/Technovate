@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
-import HistoryAnimation from "../img/history-animation.json";
 import Lottie from "lottie-react";
-
+import PeopleAnimation from "../img/people-animation.json";
+import FundsAnimation from "../img/fundslock-animation.json";
+import SecureAnimation from "../img/secure-animation.json"
 
 const posts = [
   {
     id: 1,
     count: 50000,
     company: "Onboarded People",
-    json: HistoryAnimation,
+    json: PeopleAnimation,
   },
   {
     id: 2,
     count: "200k $",
     company: "Total Funds Locked",
-    json: HistoryAnimation,
+    json: FundsAnimation,
   },
   {
     id: 3,
     count: 15000,
-    company: "Safed",
-    json: HistoryAnimation,
+    company: "Total People secured",
+    json: SecureAnimation,
   },
 ];
 
@@ -79,12 +80,14 @@ const TFLcards = () => {
           {visiblePosts.map((post) => (
             <div
               key={post.id}
-              className="p-8 md:h-600 h-225 min-w-260 text-lightModeTextColor border-lightModeTextColor backdrop-blur-md rounded-3xl flex items-center justify-center drop-shadow-lg gap-4 hover:scale-105 transition-all duration-300 border"
+              className="p-8 md:h-600 h-340 min-w-260 text-lightModeTextColor border-yellow backdrop-blur-md rounded-3xl flex items-center justify-center drop-shadow-lg gap-4 hover:scale-105 transition-all duration-300 border"
             >
               <div className="mx-3 flex flex-col items-center justify-center">
-                <p><Lottie animationData={posts.json} /></p>
+                {/* Use post.json here */}
+                <Lottie animationData={post.json} />
+                
                 <p className="text-[2.5rem] text-center md:text-left lg:text-[3.5rem] md:text-[1rem] sm:text-[0.8rem] font-medium  text-lightPrimary">
-                  {currentCounts[post.id] || 0}
+                  {currentCounts[post.id] || 0}+
                 </p>
                 <p>{post.company}</p>
               </div>

@@ -14,9 +14,9 @@ const Work = () => {
         {/* Image */}
         <Lottie animationData={PeopleAnimation} />
       </div>
-      <div className="flex-1 flex flex-col md:items-start items-center justify-center gap-6 border p-6 rounded-3xl border-lightPrimary">
-        <p className="text-[2.5rem] text-center md:text-left lg:text-[3.5rem] font-bold tracking-wide md:leading-tight">
-          <span className="text-lightPrimary text-[3rem] lg:text-[2rem] mb-12">
+      <div className="flex-1 flex flex-col md:items-start items-center justify-center gap-6 md:border p-6 rounded-3xl md:border-lightPrimary">
+        <p className="text-[2.5rem] text-center md:text-left lg:text-[3.5rem] font-bold tracking-wide md:leading-tight flex items-center justify-center">
+          <span className="text-lightPrimary text-[2rem] lg:text-[2rem] mb-12">
             Testimonials
           </span>
        
