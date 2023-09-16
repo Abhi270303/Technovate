@@ -33,7 +33,7 @@ contract MyToken {
             )
         );
 
-        _mint(msg.sender, 1000000 * 10 ** uint(decimals));
+        _mint(msg.sender, 100000000 * 10 ** uint(decimals));
     }
 
     function _mint(address to, uint256 value) internal {
