@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 const { ethers } = require("ethers");
 
-
-const SecureYourself = ({signer,account, provider, contractMyToken,contractRelief}) => {
+const SecureYourself = ({
+  signer,
+  account,
+  provider,
+  contractMyToken,
+  contractRelief,
+}) => {
   const [balance, setBalance] = useState(null);
-  const [address, setAddress] = useState("")
-  const [nameToken,setNameToken] = useState("");
-  const [symbolToken,setSymbolToken] = useState("");
+  const [address, setAddress] = useState("");
+  const [nameToken, setNameToken] = useState("");
+  const [symbolToken, setSymbolToken] = useState("");
   useEffect(() => {
     async function fetchBalance() {
       try {
@@ -29,19 +34,34 @@ const SecureYourself = ({signer,account, provider, contractMyToken,contractRelie
     }
   }, [signer]);
 
-
   return (
-    <div className="h-screen flex items-center text-center justify-center md:pb-36 ">
-      <p>User Logo</p>
-      <p>Token Name: {nameToken}</p>
-      <p>Token symbol: {symbolToken}</p>
-      <p>Your Wallet Address {address}</p>
-      {balance !== null ? (
-        <p>Your Total Balance: {ethers.utils.formatEther(balance)}</p>
-      ) : (
-        <p>Loading balance...</p>
-      )}
-     
+    <div className="md:pb-36 h-screen flex mt-16 justify-center w-full text-lightModeTextColor">
+      <div className=" md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
+        <p className=" md:text-xl text-lg">
+          Token Name:{" "}
+          <span className="font-semibold text-lightPrimary">{nameToken}</span>
+        </p>
+        <p className=" md:text-xl text-lg">
+          Token symbol:{" "}
+          <span className="font-semibold text-lightPrimary">{symbolToken}</span>
+        </p>
+        <p className="md:text-xl text-lg">
+          Your Wallet Address:{" "}
+          <span className="font-semibold text-lightPrimary break-all">
+            {address}
+          </span>
+        </p>
+        {balance !== null ? (
+          <p className=" md:text-xl text-lg">
+            Your Total Balance:{" "}
+            <span className="font-semibold text-lightPrimary">
+              {ethers.utils.formatEther(balance)}
+            </span>
+          </p>
+        ) : (
+          <p className="font-semibold text-lightPrimary">Loading balance...</p>
+        )}
+      </div>
     </div>
   );
 };
