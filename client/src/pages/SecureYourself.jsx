@@ -4,14 +4,21 @@ const { ethers } = require("ethers");
 
 const SecureYourself = ({signer,account, provider, contractMyToken,contractRelief}) => {
   const [balance, setBalance] = useState(null);
-
+  const [address, setAddress] = useState("")
+  const [nameToken,setNameToken] = useState("");
+  const [symbolToken,setSymbolToken] = useState("");
   useEffect(() => {
     async function fetchBalance() {
       try {
         // Call the balanceOf function to retrieve the balance of the target address
-        const address = await signer.getAddress();
-        const balance = await contractMyToken.balanceOf(address)
+        const address1 = await signer.getAddress();
+        const tokenName = await contractMyToken.name();
+        const tokenSymbol = await contractMyToken.symbol();
+        const balance = await contractMyToken.balanceOf(address1);
+        setAddress(address1);
         setBalance(balance);
+        setNameToken(tokenName);
+        setSymbolToken(tokenSymbol);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -25,6 +32,10 @@ const SecureYourself = ({signer,account, provider, contractMyToken,contractRelie
 
   return (
     <div className="h-screen flex items-center text-center justify-center md:pb-36 ">
+      <p>User Logo</p>
+      <p>Token Name: {nameToken}</p>
+      <p>Token symbol: {symbolToken}</p>
+      <p>Your Wallet Address {address}</p>
       {balance !== null ? (
         <p>Your Total Balance: {ethers.utils.formatEther(balance)}</p>
       ) : (
