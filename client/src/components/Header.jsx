@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import ProfileImage from "../img/user_profile_image.png";
 import DownArrow from "../img/down_arrow.svg";
-import icon from "../img/favicon.ico"
+import icon from "../img/favicon.ico";
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [visible] = useState(true);
   const navigate = useNavigate();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const headerClasses = `z-50 bg-darkBg w-screen p-3 px-4 md:p-6 md:px-16  ${
     visible ? "" : "hidden"
   }`;
 
- 
   const activeStyles =
     "text-lightPrimary after:block after:content-[''] after:absolute after:h-[2px] after:bg-lightPrimary after:w-full after:scale-x-100 after:transition after:duration-500";
 
@@ -25,7 +23,8 @@ const Header = () => {
           <img src={icon} width="30px" alt="Icon" />
           <Link to="/">
             <p className="text-lightModeTextColor text-2xl ">
-              <span className="font-semibold  text-lightPrimary">Relief</span>DAO
+              <span className="font-semibold  text-lightPrimary">Relief</span>
+              DAO
             </p>
           </Link>
         </div>
@@ -50,12 +49,9 @@ const Header = () => {
               }
               to="/tfl"
             >
-              <span className="relative">
-                TFL
-        
-              </span>
+              <span className="relative">TFL</span>
             </NavLink>
-           
+
             <NavLink
               className={({ isActive }) =>
                 `text-lg relative block text-lightModeTextColor hover:text-lightPrimary cursor-pointer after:scale-x-0 ${
@@ -64,22 +60,18 @@ const Header = () => {
               }
               to="/token"
             >
-              <span className="relative">
-                Token
-              
-              </span>
+              <span className="relative">Token</span>
             </NavLink>
-            
           </ul>
         </div>
         <div>
-          <ul>
-            <NavLink to="/secure-yourself">
+          <NavLink to="/secure-yourself">
+            <ul>
               <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
                 Secure Yourself
               </li>
-            </NavLink>
-          </ul>
+            </ul>
+          </NavLink>
         </div>
       </div>
 
@@ -94,8 +86,6 @@ const Header = () => {
         </div>
 
         <div className="relative z-50">
-         
-
           {isMenu && (
             <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0 z-50">
               <ul className="flex flex-col ">

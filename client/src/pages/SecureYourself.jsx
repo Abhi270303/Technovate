@@ -31,7 +31,7 @@ const { MyTokenABI,MyTokenByteCode,MyTokenContractAddress, ReliefDaoABI, ReliefD
     },[]);
   return (
   <div className='h-screen flex items-center text-center justify-center md:pb-36 '>
-   {account? <p> Account Address : </p>
+   {account? <p> Account Address :{account} </p>
     :<button className='  rounded-lg p-4 w-1/4 bg-lightPrimary'>Connect Wallet</button>
   }
     </div>
