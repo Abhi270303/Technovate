@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import ProfileImage from "../img/user_profile_image.png";
 import DownArrow from "../img/down_arrow.svg";
+import icon from "../img/favicon.ico"
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -24,7 +25,7 @@ const Header = () => {
       {/* desktop & tablet */}
       <div className="hidden md:flex w-full h-full items-center justify-between">
         <div className="flex items-center gap-2">
-          {/* <img src={Logo} width="30px" alt="logo" /> */}
+          <img src={icon} width="30px" alt="Icon" />
           <Link to="/">
             <p className="text-lightModeTextColor text-2xl ">
               <span className="font-semibold  text-lightPrimary">Relief</span>DAO
