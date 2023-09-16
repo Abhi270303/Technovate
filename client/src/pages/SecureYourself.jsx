@@ -22,6 +22,7 @@ const SecureYourself = ({signer,account, provider, contractMyToken,contractRelie
     }
   }, [signer]);
 
+
   return (
     <div className="h-screen flex items-center text-center justify-center md:pb-36 ">
       {balance !== null ? (

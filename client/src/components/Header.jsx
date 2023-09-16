@@ -68,11 +68,13 @@ const Header = ({account}) => {
 
         <div>
           <ul>
-            {account && (
+            {account.account ? (
               <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
-                {(account.account)}
+                {account.account.substring(0, 10)+'...'}
               </li>
-            )}
+            ):<li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
+           Connect Wallet
+          </li>}
           </ul>
         </div>
       </div>
