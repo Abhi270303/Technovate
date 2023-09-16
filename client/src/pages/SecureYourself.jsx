@@ -89,7 +89,7 @@ const SecureYourself = ({
 
   const handleAddressChange = (event) => {
     setAllowAddress(event.target.value);
-  };
+  };
 
   const handleTransfer = async (event) => {
     event.preventDefault();
@@ -102,7 +102,7 @@ const SecureYourself = ({
   };
 
   return (
-    <div className="md:pb-36 h-screen flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
+    <div className="md:pb-36 flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
       <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
         <p className=" md:text-2xl font-semibold text-lg">User Info</p>
 
@@ -168,7 +168,7 @@ const SecureYourself = ({
               Amount:
             </label>
             <input
-              className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+              className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
               id="amount"
               value={amount}
@@ -182,7 +182,7 @@ const SecureYourself = ({
               Recipient:
             </label>
             <input
-              className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+              className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
               id="recipient"
               value={recipient}
@@ -200,13 +200,18 @@ const SecureYourself = ({
         </form>
       </div>
 
-      <div className="card">
-        <h3>Allowance Card</h3>
+      <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-cente mb-25">
+        <p className=" md:text-2xl font-semibold text-lg">Allowance Card</p>
         <div>
-          <label>Recipient Address:</label>
-          <input type="text" value={address} onChange={handleAddressChange} />
+          <label className="md:text-xl text-lg md:mt-2">Recipient Address:</label>
+          <input
+            type="text"
+            value={allowAddress}
+            onChange={handleAddressChange}
+            className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+          />
         </div>
-        <button onClick={fetchAllowance}>Fetch Allowance</button>
+        <button onClick={fetchAllowance} className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full">Fetch Allowance</button>
         {allowanceAmount && (
           <div>
             <p>Allowance Amount (ETH): {allowanceAmount}</p>
