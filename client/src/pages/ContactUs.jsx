@@ -2,7 +2,7 @@ import React from 'react'
 
 const ContactUs = () => {
   return (
-    <div className='h-screen bg-darkBg text-lightModeTextColor '>ContactUs</div>
+    <div className='bg-darkBg md:mt-36 mt-9 text-lightModeTextColor '>ContactUs</div>
   )
 }
 

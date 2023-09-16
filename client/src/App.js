@@ -8,12 +8,13 @@ import TFL from "./pages/TFL";
 import Token from "./pages/Token";
 import ContactUs from "./pages/ContactUs";
 import SecureYourself from "./pages/SecureYourself";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div>
       <Header />
-      <div className=" p-3 px-4 md:p-6 md:px-16">
+      <div className=" p-3 px-4 md:p-6 md:px-16 b">
         <Routes>
           <Route path="/*" element={<HomePage />} />
           <Route path="/secure-yourself" element={<SecureYourself />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
         </Routes>
+        <Footer />
       </div>
     </div>
   );

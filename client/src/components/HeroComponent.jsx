@@ -6,11 +6,8 @@ import HeroAnimation from "../img/hero-animation.json";
 const HeroComponent = () => {
   return (
     <div>
-      <section
-        className="grid grid-cols-1 md:grid-cols-2 w-full"
-        id="home"
-      >
-        <div className="flex-1 flex flex-col items-start justify-center h-[75%] gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 w-full" id="home">
+        <div className="flex-1 flex flex-col md:items-start items-center justify-center md:h-[75%] gap-6">
           <p className="text-[2.5rem] text-center md:text-left lg:text-[3.5rem] font-bold tracking-wide md:leading-tight">
             <span className="text-lightPrimary text-[3rem] lg:text-[4rem] mb-12">
               Relief
@@ -24,7 +21,7 @@ const HeroComponent = () => {
           
           </p>
         </div>
-        <div className="flex-1 flex items-center relative h-[75%]  md:mt-0">
+        <div className="flex-1 flex items-center relative md:h-[75%]  md:mt-0">
           {/* Image */}
           <Lottie animationData={HeroAnimation} />
         </div>
