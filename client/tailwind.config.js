@@ -59,7 +59,8 @@ module.exports = {
         footerSubtitle: 'rgba(255, 255, 255, 0.55)',
         lightBgBlue: 'rgba(13, 27, 207, 0.05)',
         yellow: '#FFFC10',
-        darkBg: '#1d1d1d'
+        darkBg: '#1d1d1d',
+        white: "#ffffff",
       },
     },
   },

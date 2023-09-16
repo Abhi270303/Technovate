@@ -188,7 +188,7 @@ const Header = () => {
           {/* <img src={Logo} width="25px" className="mx-1" alt="logo" /> */}
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
-              <span className="font-semibold">RELIEF</span>dao
+              <span className="font-semibold">Relief</span>DAO
             </p>
           </NavLink>
         </div>
