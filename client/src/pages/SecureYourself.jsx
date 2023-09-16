@@ -78,8 +78,10 @@ const SecureYourself = ({
   };
 
   return (
-    <div className="md:pb-36 h-screen flex mt-16 justify-center w-full text-lightModeTextColor">
-      <div className=" md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
+    <div className="md:pb-36 h-screen flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
+      <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
+      <p className=" md:text-2xl font-semibold text-lg">User Info</p>
+
         <p className=" md:text-xl text-lg">
           Token Name:{" "}
           <span className="font-semibold text-lightPrimary">{nameToken}</span>
@@ -105,7 +107,12 @@ const SecureYourself = ({
           <p className="font-semibold text-lightPrimary">Loading balance...</p>
         )}
 
-        {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
+        
+      </div>
+
+      <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
+
+      {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
           <p>Your trust Address is : {trustAddress}</p>
         ) : (
           <div className="flex flex-col">
@@ -118,26 +125,27 @@ const SecureYourself = ({
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
-                placeholder="Enter Trustworthy addressing"
+                placeholder="Enter Trustworthy address"
               />
 
               <button
                 type="submit"
-                className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg"
+                className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
               >
                 Add Trust Worthy
               </button>
             </form>
           </div>
-        )}
+        )}  
       </div>
-      <div className="card">
-        <h2>Transfer Funds</h2>
+
+      <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
+        <p className=" md:text-2xl font-semibold text-lg">Transfer Funds</p>
         <form onSubmit={handleTransfer}>
           <div className="form-group">
-            <label htmlFor="amount">Amount:</label>
+            <label htmlFor="amount" className=" md:text-xl text-lg">Amount:</label>
             <input
-              className="text-black"
+              className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
               id="amount"
               value={amount}
@@ -147,9 +155,9 @@ const SecureYourself = ({
             />
           </div>
           <div className="form-group">
-            <label htmlFor="recipient">Recipient:</label>
+            <label htmlFor="recipient" className="md:text-xl text-lg">Recipient:</label>
             <input
-              className="text-black"
+              className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
               id="recipient"
               value={recipient}
@@ -158,7 +166,7 @@ const SecureYourself = ({
               required
             />
           </div>
-          <button type="submit">Transfer</button>
+          <button className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full" type="submit">Transfer</button>
         </form>
       </div>
     </div>
