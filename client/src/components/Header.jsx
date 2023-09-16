@@ -3,9 +3,9 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import ProfileImage from "../img/user_profile_image.png";
 import DownArrow from "../img/down_arrow.svg";
 import icon from "../img/favicon.ico";
-import {AiOutlineMenu} from "react-icons/ai"
+import { AiOutlineMenu } from "react-icons/ai";
 
-const Header = ({account}) => {
+const Header = (account) => {
   const [isMenu, setIsMenu] = useState(false);
   const [visible] = useState(true);
   const navigate = useNavigate();
@@ -70,11 +70,13 @@ const Header = ({account}) => {
           <ul>
             {account.account ? (
               <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
-                {account.account.substring(0, 10)+'...'}
+                {account.account.substring(0, 10) + "..."}
               </li>
-            ):<li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
-           Connect Wallet
-          </li>}
+            ) : (
+              <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
+                Connect Wallet
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -89,10 +91,8 @@ const Header = ({account}) => {
               <span className="font-semibold">Relief</span>DAO
             </p>
           </NavLink>
-          <AiOutlineMenu className=" text-lightModeTextColor " />
-          
         </div>
-
+        <AiOutlineMenu className=" text-lightModeTextColor " />
         <div className="relative z-50">
           {isMenu && (
             <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0 z-50">
