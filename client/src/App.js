@@ -13,10 +13,8 @@ import { useState, useEffect } from "react";
 const { ethers } = require("ethers");
 const {
   MyTokenABI,
-  MyTokenByteCode,
   MyTokenContractAddress,
   ReliefDaoABI,
-  ReliefDaoByteCode,
   ReliefDaoContractAddress,
 } = require("./contract_instances/config");
 

@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
 const { ethers } = require("ethers");
+const {
+  MyTokenContractAddress,
+  ReliefDaoContractAddress,
+} = require("../contract_instances/config");
 
-
-const SecureYourself = ({signer,account, provider, contractMyToken,contractRelief}) => {
+const SecureYourself = ({
+  signer,
+  account,
+  provider,
+  contractMyToken,
+  contractRelief,
+}) => {
   const [balance, setBalance] = useState(null);
-  const [address, setAddress] = useState("")
-  const [nameToken,setNameToken] = useState("");
-  const [symbolToken,setSymbolToken] = useState("");
+  const [address, setAddress] = useState("");
+  const [nameToken, setNameToken] = useState("");
+  const [symbolToken, setSymbolToken] = useState("");
   useEffect(() => {
     async function fetchBalance() {
       try {
@@ -29,7 +38,6 @@ const SecureYourself = ({signer,account, provider, contractMyToken,contractRelie
     }
   }, [signer]);
 
-
   return (
     <div className="h-screen flex items-center text-center justify-center md:pb-36 ">
       <p>User Logo</p>
@@ -41,7 +49,6 @@ const SecureYourself = ({signer,account, provider, contractMyToken,contractRelie
       ) : (
         <p>Loading balance...</p>
       )}
-     
     </div>
   );
 };
