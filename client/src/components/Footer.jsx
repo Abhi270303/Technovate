@@ -60,7 +60,8 @@ const Footer = () => {
 
 
       {/* For Mobiles */}
-      <div className='md:hidden bg-lightPrimary p-8'>
+      
+      <div className='md:hidden bg-darkbg p-8'>
         <div className='flex flex-col items-center justify-center'>
           <p className='text-yellow text-xl'>Relief DAO</p>
           <p className='text-yellow font-extralight text-sm'>Building Bridges in Times of Crisis</p>
