@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import ProfileImage from "../img/user_profile_image.png";
 import DownArrow from "../img/down_arrow.svg";
 import icon from "../img/favicon.ico";
+import {AiOutlineMenu} from "react-icons/ai"
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -77,12 +78,14 @@ const Header = () => {
 
       {/* mobile */}
       <div className="z-50 md:hidden flex items-center justify-between w-full h-full ">
-        <div className="flex items-center w-full justify-center">
+        <div className="flex items-center w-full justify-between">
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
               <span className="font-semibold">Relief</span>DAO
             </p>
           </NavLink>
+          <AiOutlineMenu className=" text-lightModeTextColor " />
+          
         </div>
 
         <div className="relative z-50">
