@@ -25,23 +25,25 @@ function App() {
   const [contractMyToken, setContractMyToken] = useState(null);
   const [provider, setProvider] = useState(null);
   const [contractRelief, setContractRelief] = useState(null);
+  const [signer,setSigner] = useState(null);
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const loadProvider = async () => {
       if (provider) {
         await provider.send("eth_requestAccounts", []);
-        const signer = provider.getSigner();
+        const signerA = provider.getSigner();
+        setSigner(signerA);
         const address = await signer.getAddress();
         setAccount(address);
         const contract1 = new ethers.Contract(
           MyTokenContractAddress,
           MyTokenABI,
-          signer
+          signerA
         );
         const contract2 = new ethers.Contract(
           ReliefDaoContractAddress,
           ReliefDaoABI,
-          signer
+          signerA
         );
         setContractMyToken(contract1);
         setContractRelief(contract2);
@@ -56,11 +58,11 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header account={account} />
       <div className=" p-3 px-4 md:p-6 md:px-16 b">
         <Routes>
-          <Route path="/*" element={<HomePage />} />
-          <Route path="/secure-yourself" element={<SecureYourself account={account} provider={provider} contractMyToken={contractMyToken} contractRelief={contractRelief}/>} />
+          <Route path="/*" element={<HomePage  />} />
+          <Route path="/secure-yourself" element={<SecureYourself  signer={signer} account={account} provider={provider} contractMyToken={contractMyToken} contractRelief={contractRelief}/>} />
           <Route path="/tfl" element={<TFL />} />
           <Route path="/token" element={<Token />} />
           <Route path="/contact-us" element={<ContactUs />} />

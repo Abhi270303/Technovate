@@ -4,7 +4,7 @@ import ProfileImage from "../img/user_profile_image.png";
 import DownArrow from "../img/down_arrow.svg";
 import icon from "../img/favicon.ico";
 
-const Header = () => {
+const Header = (account) => {
   const [isMenu, setIsMenu] = useState(false);
   const [visible] = useState(true);
   const navigate = useNavigate();
@@ -64,21 +64,22 @@ const Header = () => {
             </NavLink>
           </ul>
         </div>
+
         <div>
-          <NavLink to="/secure-yourself">
-            <ul>
+          <ul>
+            {account && (
               <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
-                Secure Yourself
+                {account.account}
               </li>
-            </ul>
-          </NavLink>
+            )}
+          </ul>
         </div>
       </div>
 
       {/* mobile */}
       <div className="z-50 md:hidden flex items-center justify-between w-full h-full ">
         <div className="flex items-center w-full justify-center">
-        <img src={icon} width="30px" alt="Icon" />
+          <img src={icon} width="30px" alt="Icon" />
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
               <span className="font-semibold">Relief</span>DAO
