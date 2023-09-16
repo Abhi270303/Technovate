@@ -7,6 +7,7 @@ const HomePage = () => {
   return (
     <div>
       <div className=' bg-darkBg text-lightModeTextColor flex flex-col'>
+        
         <HeroComponent />
         <Work />
         <ContactUs />
