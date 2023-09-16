@@ -16,6 +16,9 @@ const Header = (account) => {
   const activeStyles =
     "text-lightPrimary after:block after:content-[''] after:absolute after:h-[2px] after:bg-lightPrimary after:w-full after:scale-x-100 after:transition after:duration-500";
 
+  const handleIsMenu = () => {
+    setIsMenu(!isMenu);
+  };
   return (
     <header className={headerClasses}>
       {/* desktop & tablet */}
@@ -92,10 +95,13 @@ const Header = (account) => {
             </p>
           </NavLink>
         </div>
-        <AiOutlineMenu className=" text-lightModeTextColor " />
+        <AiOutlineMenu
+          className=" text-lightModeTextColor "
+          onClick={handleIsMenu}
+        />
         <div className="relative z-50">
           {isMenu && (
-            <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0 z-50">
+            <div className="w-40 border border-lightPrimary bg-darkBg shadow-xl rounded-lg flex flex-col absolute top-8 right-0 z-50">
               <ul className="flex flex-col ">
                 <li
                   className="text-base text-lightModeTextColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
@@ -107,20 +113,21 @@ const Header = (account) => {
                   className="text-base text-lightModeTextColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
                   onClick={() => setIsMenu(false)}
                 >
-                  <NavLink to={"/resources"}>Resources</NavLink>
+                  <NavLink to={"/tfl"}>TFL</NavLink>
                 </li>
                 <li
                   className="text-base text-lightModeTextColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
                   onClick={() => setIsMenu(false)}
                 >
-                  <NavLink to={"findjob"}>Find Job</NavLink>
+                  <NavLink to={"token"}>Token</NavLink>
                 </li>
               </ul>
 
               <p
-                className="m-2 p-2 rounded-md shadow-md flex items-center justify-center bg-lightPrimary gap-3 cursor-pointer hover:bg-gray-300 transition-all duration-100 ease-in-out text-lightCard text-base"
+                className="m-2 p-2 rounded-md shadow-md flex items-center justify-center bg-lightPrimary gap-3 cursor-pointer hover:bg-gray-300 transition-all duration-100 ease-in-out text-darkBg"
                 onClick={() => setIsMenu(false)}
-              ></p>
+              > {account.account ?   (account.account.substring(0, 10) + "...") : ('Connect Wallet')
+              }</p>
             </div>
           )}
         </div>
