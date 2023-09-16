@@ -1,33 +1,49 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
+const ethers = require('ethers');
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+    const provider = new ethers.providers.JsonRpcProvider('http://localhost:8545');
+    const wallet = new ethers.Wallet('your-private-key', provider);
 
-  const lockedAmount = hre.ethers.parseEther("0.001");
+    const myToken = new ethers.Contract('MyTokenAddress', MyTokenABI, wallet);
 
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+    // Prepare Permit Data
+    const nonce = await myToken.nonces(wallet.address);
+    const expiry = Math.floor(Date.now() / 1000) + 3600; // 1 hour from now
 
-  await lock.waitForDeployment();
+    const domain = {
+        name: 'MyToken',
+        version: '1',
+        chainId: 1,  // Replace with actual chainId
+        verifyingContract: myToken.address
+    };
 
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+    const types = {
+        Permit: [
+            { name: 'holder', type: 'address' },
+            { name: 'spender', type: 'address' },
+            { name: 'nonce', type: 'uint256' },
+            { name: 'expiry', type: 'uint256' },
+            { name: 'allowed', type: 'bool' }
+        ]
+    };
+
+    const value = {
+        holder: wallet.address,
+        spender: 'SimpleDAOAddress',  // Replace with actual DAO address
+        nonce: nonce.toString(),
+        expiry: expiry.toString(),
+        allowed: true
+    };
+
+    const signature = await wallet._signTypedData(domain, types, value);
+    const { v, r, s } = ethers.utils.splitSignature(signature);
+
+    // You can now use v, r, s in the permit function
+    console.log('v:', v);
+    console.log('r:', r);
+    console.log('s:', s);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
+    console.error(error);
 });
