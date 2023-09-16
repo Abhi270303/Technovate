@@ -17,7 +17,7 @@ const HeroComponent = () => {
 
           <p className="text-center md:text-justify text-lighttextGray text-sm flex flex-wrap gap-1">
           
-          At ReliefDAO, we believe that every person, no matter where they are, deserves immediate support during difficult times. Our mission is to provide a lifeline for those facing crises by leveraging the power of blockchain technology. With ReliefDAO, you can securely receive financial assistance, even in the most challenging circumstances, ensuring that help is just a transaction away. Join us in making a difference and together, let's build hope, one transaction at a time.
+          At Relief DAO, we believe that every person, no matter where they are, deserves immediate support during difficult times. Our mission is to provide a lifeline for those facing crises by leveraging the power of blockchain technology. With ReliefDAO, you can securely receive financial assistance, even in the most challenging circumstances, ensuring that help is just a transaction away. Join us in making a difference and together, let's build hope, one transaction at a time.
           
           </p>
         </div>
