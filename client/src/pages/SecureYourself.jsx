@@ -1,11 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-const { Web3Provider } = require( "@ethersproject/providers");
+const { Network, Alchemy } = require('alchemy-sdk');
 const { ethers } = require("ethers");
 const { MyTokenABI,MyTokenByteCode,MyTokenContractAddress, ReliefDaoABI, ReliefDaoByteCode, ReliefDaoContractAddressv } = require('../contract_instances/config');
 
 
   const SecureYourself = () => {
+    const settings = {
+      apiKey: 'cJblByl8GF-w147rSDyYcv4rDntmCIp1', // Replace with your Alchemy API Key.
+      network: Network.ETH_SEPOLIA, // Replace with your network.
+    };
+    const alchemy = new Alchemy(settings);
     const [account,setAccount] = useState("");
     const [contract,setContract] = useState(null);
     const [provider,setProvider] = useState(null);
