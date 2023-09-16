@@ -11,9 +11,9 @@ import SecureYourself from "./pages/SecureYourself";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
-      
+      <div className=" p-3 px-4 md:p-6 md:px-16">
         <Routes>
           <Route path="/*" element={<HomePage />} />
           <Route path="/secure-yourself" element={<SecureYourself />} />
@@ -21,10 +21,8 @@ function App() {
           <Route path="/token" element={<Token />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
-
-          
         </Routes>
-     
+      </div>
     </div>
   );
 }
