@@ -5,7 +5,7 @@ import DownArrow from "../img/down_arrow.svg";
 import icon from "../img/favicon.ico";
 import {AiOutlineMenu} from "react-icons/ai"
 
-const Header = (account) => {
+const Header = ({account}) => {
   const [isMenu, setIsMenu] = useState(false);
   const [visible] = useState(true);
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ const Header = (account) => {
           <ul>
             {account && (
               <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
-                {account.account}
+                {(account.account)}
               </li>
             )}
           </ul>

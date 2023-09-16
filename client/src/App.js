@@ -33,7 +33,7 @@ function App() {
         await provider.send("eth_requestAccounts", []);
         const signerA = provider.getSigner();
         setSigner(signerA);
-        const address = await signer.getAddress();
+        const address = await signerA.getAddress();
         setAccount(address);
         const contract1 = new ethers.Contract(
           MyTokenContractAddress,
@@ -48,7 +48,7 @@ function App() {
         setContractMyToken(contract1);
         setContractRelief(contract2);
         setProvider(provider);
-        console.log(contract1.address);
+        console.log();
       } else {
         alert("Wallet is not present");
       }
