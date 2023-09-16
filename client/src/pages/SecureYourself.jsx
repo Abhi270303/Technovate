@@ -18,8 +18,11 @@ const SecureYourself = ({
   const [symbolToken, setSymbolToken] = useState("");
   const [trustAddress, setTrustAddress] = useState();
   const [inputValue, setInputValue] = useState("");
-  const [amount, setAmount] = useState('');
-  const [recipient, setRecipient] = useState('');
+  const [amount, setAmount] = useState("");
+  const [recipient, setRecipient] = useState("");
+  const [allowanceAmount, setAllowanceAmount] = useState("");
+  const [allowAddress, setAllowAddress] = useState(null);
+
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
@@ -36,6 +39,7 @@ const SecureYourself = ({
         const tokenName = await contractMyToken.name();
         const tokenSymbol = await contractMyToken.symbol();
         const balance = await contractMyToken.balanceOf(address1);
+
         setAddress(address1);
         setBalance(balance);
         setNameToken(tokenName);
@@ -53,6 +57,28 @@ const SecureYourself = ({
 
   const permit = async () => {};
 
+  const handleAddressChange = (event) => {
+    setAllowAddress(event.target.value);
+  };
+
+  const fetchAllowance = async () => {
+    try {
+      // Call the contract function to get the allowance
+      const allowanceInWei = await contractMyToken.allowance(
+        signer.getAddress(),
+        allowAddress /* Recipient's address */
+      );
+
+      // Convert the allowance from Wei to Ether
+      const allowanceInEther = ethers.utils.formatEther(allowanceInWei);
+
+      // Update the state with the fetched allowance
+      setAllowanceAmount(allowanceInEther);
+    } catch (error) {
+      console.error("Error fetching allowance:", error);
+    }
+  };
+
   const yourTrustWorthyParty = async () => {
     console.log(signer.getAddress());
     const address = await contractMyToken.brother(signer.getAddress());
@@ -67,14 +93,14 @@ const SecureYourself = ({
     setInputValue(event.target.value);
   };
 
-  const handleTransfer = async(event) => {
+  const handleTransfer = async (event) => {
     event.preventDefault();
     // You can perform actions with the amount and recipient here, e.g., submit a transaction.
     const parsedAmount = ethers.utils.parseEther(amount);
-    await contractMyToken.transfer(recipient,parsedAmount);
+    await contractMyToken.transfer(recipient, parsedAmount);
     // Reset the form
-    setAmount('');
-    setRecipient('');
+    setAmount("");
+    setRecipient("");
   };
 
   return (
@@ -124,36 +150,49 @@ const SecureYourself = ({
           </form>
         </div>
       )}
-          <div className="card">
-      <h2>Transfer Funds</h2>
-      <form onSubmit={handleTransfer}>
-        <div className="form-group">
-          <label htmlFor="amount">Amount:</label>
-          <input
-          className="text-black"
-            type="text"
-            id="amount"
-            value={amount}
-            onChange={handleAmountChange}
-            placeholder="Enter amount"
-            required
-          />
+      <div className="card">
+        <h2>Transfer Funds</h2>
+        <form onSubmit={handleTransfer}>
+          <div className="form-group">
+            <label htmlFor="amount">Amount:</label>
+            <input
+              className="text-black"
+              type="text"
+              id="amount"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="recipient">Recipient:</label>
+            <input
+              className="text-black"
+              type="text"
+              id="recipient"
+              value={recipient}
+              onChange={handleRecipientChange}
+              placeholder="Enter recipient's address"
+              required
+            />
+          </div>
+          <button type="submit">Transfer</button>
+        </form>
+      </div>
+      <div className="card">
+        <h3>Allowance Card</h3>
+        <div>
+          <label>Recipient Address:</label>
+          <input type="text" value={address} onChange={handleAddressChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="recipient">Recipient:</label>
-          <input
-          className="text-black"
-            type="text"
-            id="recipient"
-            value={recipient}
-            onChange={handleRecipientChange}
-            placeholder="Enter recipient's address"
-            required
-          />
-        </div>
-        <button type="submit">Transfer</button>
-      </form>
-    </div>
+        <button onClick={fetchAllowance}>Fetch Allowance</button>
+        {allowanceAmount && (
+          <div>
+            <p>Allowance Amount (ETH): {allowanceAmount}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
