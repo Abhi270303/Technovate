@@ -8,7 +8,7 @@ const Header = () => {
   const [visible] = useState(true);
   const navigate = useNavigate();
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const headerClasses = ` w-screen p-3 px-4 md:p-6 md:px-16  ${
+  const headerClasses = `bg-darkBg w-screen p-3 px-4 md:p-6 md:px-16  ${
     visible ? "" : "hidden"
   }`;
 
@@ -27,7 +27,7 @@ const Header = () => {
           {/* <img src={Logo} width="30px" alt="logo" /> */}
           <Link to="/">
             <p className="text-lightModeTextColor text-2xl ">
-              <span className="font-semibold">Bit</span>Coin
+              <span className="font-semibold  text-lightPrimary">RELIEF</span>dao
             </p>
           </Link>
         </div>
@@ -187,7 +187,7 @@ const Header = () => {
           {/* <img src={Logo} width="25px" className="mx-1" alt="logo" /> */}
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
-              <span className="font-semibold">Bit</span>Coin
+              <span className="font-semibold">RELIEF</span>dao
             </p>
           </NavLink>
         </div>

@@ -52,12 +52,14 @@ module.exports = {
       },
       colors: {
         lightModeHeadingheadingColor: "#000000",
-        lightModeTextColor: "#000000",
+        lightModeTextColor: "#ffffff",
         lighttextGray: "#929292",
-        lightPrimary: "#0D1BCF",
+        lightPrimary: "#FFFC10",
         lightCard: "#FFFFFF",
         footerSubtitle: 'rgba(255, 255, 255, 0.55)',
         lightBgBlue: 'rgba(13, 27, 207, 0.05)',
+        yellow: '#FFFC10',
+        darkBg: '#1d1d1d'
       },
     },
   },
