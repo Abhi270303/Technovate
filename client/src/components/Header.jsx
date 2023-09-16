@@ -86,6 +86,7 @@ const Header = () => {
       {/* mobile */}
       <div className="z-50 md:hidden flex items-center justify-between w-full h-full ">
         <div className="flex items-center w-full justify-center">
+        <img src={icon} width="30px" alt="Icon" />
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
               <span className="font-semibold">Relief</span>DAO
