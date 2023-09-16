@@ -22,9 +22,9 @@ function App() {
           <Route path="/token" element={<Token />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
-        </Routes>
-        <Footer />
+        </Routes> 
       </div>
+      <Footer />
     </div>
   );
 }

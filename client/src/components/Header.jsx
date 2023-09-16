@@ -80,7 +80,7 @@ const Header = () => {
         <div className="flex items-center w-full justify-center">
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
-              <span className="font-semibold">RELIEF</span>dao
+              <span className="font-semibold">Relief</span>DAO
             </p>
           </NavLink>
         </div>
