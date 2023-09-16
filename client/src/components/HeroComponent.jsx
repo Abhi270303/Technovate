@@ -10,18 +10,15 @@ const HeroComponent = () => {
         <div className="flex-1 flex flex-col md:items-start items-center justify-center md:h-[75%] gap-6">
           <p className="text-[2.5rem] text-center md:text-left lg:text-[3.5rem] font-bold tracking-wide md:leading-tight">
             <span className="text-lightPrimary text-[3rem] lg:text-[4rem] mb-12">
-              RELIEF
+              Relief
             </span>
-            dao
+            DAO
           </p>
 
           <p className="text-center md:text-justify text-lighttextGray text-sm flex flex-wrap gap-1">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially...
+          
+          At ReliefDAO, we believe that every person, no matter where they are, deserves immediate support during difficult times. Our mission is to provide a lifeline for those facing crises by leveraging the power of blockchain technology. With ReliefDAO, you can securely receive financial assistance, even in the most challenging circumstances, ensuring that help is just a transaction away. Join us in making a difference and together, let's build hope, one transaction at a time.
+          
           </p>
         </div>
         <div className="flex-1 flex items-center relative md:h-[75%]  md:mt-0">

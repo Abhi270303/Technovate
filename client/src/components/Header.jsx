@@ -27,7 +27,7 @@ const Header = () => {
           {/* <img src={Logo} width="30px" alt="logo" /> */}
           <Link to="/">
             <p className="text-lightModeTextColor text-2xl ">
-              <span className="font-semibold  text-lightPrimary">RELIEF</span>dao
+              <span className="font-semibold  text-lightPrimary">Relief</span>DAO
             </p>
           </Link>
         </div>
