@@ -203,7 +203,7 @@ const SecureYourself = ({
       <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-cente mb-25">
         <p className=" md:text-2xl font-semibold text-lg">Allowance Card</p>
         <div>
-          <label className="md:text-xl text-lg md:mt-2">Recipient Address:</label>
+          <label className="md:text-xl text-lg md:mt-2 w-full">Recipient Address:</label>
           <input
             type="text"
             value={allowAddress}
