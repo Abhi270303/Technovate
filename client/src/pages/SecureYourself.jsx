@@ -1,46 +1,49 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-const { Network, Alchemy } = require('alchemy-sdk');
+import { useState, useEffect } from "react";
 const { ethers } = require("ethers");
-const { MyTokenABI,MyTokenByteCode,MyTokenContractAddress, ReliefDaoABI, ReliefDaoByteCode, ReliefDaoContractAddressv } = require('../contract_instances/config');
 
 
-  const SecureYourself = () => {
-    const settings = {
-      apiKey: 'cJblByl8GF-w147rSDyYcv4rDntmCIp1', // Replace with your Alchemy API Key.
-      network: Network.ETH_SEPOLIA, // Replace with your network.
-    };
-    const alchemy = new Alchemy(settings);
-    const [account,setAccount] = useState("");
-    const [contract,setContract] = useState(null);
-    const [provider,setProvider] = useState(null);
+const SecureYourself = ({signer,account, provider, contractMyToken,contractRelief}) => {
+  const [balance, setBalance] = useState(null);
+  const [address, setAddress] = useState("")
+  const [nameToken,setNameToken] = useState("");
+  const [symbolToken,setSymbolToken] = useState("");
+  useEffect(() => {
+    async function fetchBalance() {
+      try {
+        // Call the balanceOf function to retrieve the balance of the target address
+        const address1 = await signer.getAddress();
+        const tokenName = await contractMyToken.name();
+        const tokenSymbol = await contractMyToken.symbol();
+        const balance = await contractMyToken.balanceOf(address1);
+        setAddress(address1);
+        setBalance(balance);
+        setNameToken(tokenName);
+        setSymbolToken(tokenSymbol);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+    if (signer) {
+      fetchBalance();
+    }
+  }, [signer]);
 
 
-    useEffect(()=>{
-      const provider =  new ethers.providers.Web3Provider(window.ethereum)
-      const loadProvider=async()=>{
-        if(provider){
-          await provider.send("eth_requestAccounts",[]);
-          const signer = provider.getSigner();
-          const address = await signer.getAddress();
-          setAccount(address);
-          const contract = new ethers.Contract(MyTokenContractAddress,MyTokenABI,signer);
-          setContract(contract);
-          setProvider(provider);
-          console.log(contract);
-        }else{
-          alert("Wallet is not present");
-        }
-      };
-      provider && loadProvider();
-    },[]);
   return (
-  <div className='h-screen flex items-center text-center justify-center md:pb-36 '>
-   {account? <p> Account Address :{account} </p>
-    :<button className='  rounded-lg p-4 w-1/4 bg-lightPrimary'>Connect Wallet</button>
-  }
+    <div className="h-screen flex items-center text-center justify-center md:pb-36 ">
+      <p>User Logo</p>
+      <p>Token Name: {nameToken}</p>
+      <p>Token symbol: {symbolToken}</p>
+      <p>Your Wallet Address {address}</p>
+      {balance !== null ? (
+        <p>Your Total Balance: {ethers.utils.formatEther(balance)}</p>
+      ) : (
+        <p>Loading balance...</p>
+      )}
+     
     </div>
-  )
-}
+  );
+};
 
-export default SecureYourself
+export default SecureYourself;
