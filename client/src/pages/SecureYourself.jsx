@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SecureYourself = () => {
+  const SecureYourself = () => {
   return (
-    <div>SecureYourself</div>
+  <div>SecureYourself</div>
   )
 }
 
