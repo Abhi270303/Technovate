@@ -9,14 +9,11 @@ const Header = () => {
   const [visible] = useState(true);
   const navigate = useNavigate();
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const headerClasses = `bg-darkBg w-screen p-3 px-4 md:p-6 md:px-16  ${
+  const headerClasses = `z-50 bg-darkBg w-screen p-3 px-4 md:p-6 md:px-16  ${
     visible ? "" : "hidden"
   }`;
 
-  // const dropDownHandle = () => {
-  //   setIsMenu(!isMenu);
-  // };
-
+ 
   const activeStyles =
     "text-lightPrimary after:block after:content-[''] after:absolute after:h-[2px] after:bg-lightPrimary after:w-full after:scale-x-100 after:transition after:duration-500";
 
@@ -51,124 +48,28 @@ const Header = () => {
                   isActive ? activeStyles : " "
                 }`
               }
-              // onClick={() => handleItemClick(1)}
               to="/tfl"
             >
               <span className="relative">
                 TFL
-                {/* {selectedItem === 1 && (
-                                        <span className="border-b-2 ease-in-out border-lightPrimary animate-border-animation"></span>
-                                    )} */}
+        
               </span>
             </NavLink>
-            {/* <>
-              <li
-                className="flex gap-3 text-sm text-lightModeTextColor hover:text-lightPrimary cursor-pointer"
-                onClick={dropDownHandle}
-              >
-                <img
-                    src={ProfileImage}
-                    className="w-12 min-w-[40px] h-12 min-h-[40px] cursor-pointer rounded-full"
-                    alt="profile_picture"
-                  />
-                <div className="flex flex-col justify-center">
-                  <div>vwakesahu</div>
-                  <div className="text-lighttextGray text-sm -mt-1">
-                    Ui/Ux Designer
-                  </div>
-                </div>
-                <img src={DownArrow} alt="drop_down_menu" />
-              </li>
-            </> */}
-
-            {/* <li
-              className="flex gap-3 text-sm text-lightModeTextColor hover:text-lightPrimary cursor-pointer"
-              onClick={dropDownHandle}
-            >
-              <img src={DownArrow} alt="drop_down_menu" />
-            </li> */}
-            {/* <div className="">
-              {isMenu && (
-                <div className=" w-[200px] bg-lightCard drop-shadow-lg rounded-lg flex flex-col absolute top-20 right-14 py-2">
-                  <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-                    
-                    <Link
-                      to="/user/info"
-                      className="w-full flex items-center justify-center gap-3"
-                      onClick={() => setIsMenu(false)}
-                    >
-                      Connect Wallet
-                    </Link>
-                  </div>
-
-                  <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-            
-                    <p
-                      className="w-full flex items-center justify-center gap-3"
-                      onClick={() => setIsMenu(false)}
-                    >
-                      <Link to="/user/dashboard">User DashBoard</Link>
-                    </p>
-                  </div>
-
-                  <Link to="/policy">
-                    <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-      
-                      <p
-                        className="w-full flex items-center justify-center gap-3"
-                        onClick={() => setIsMenu(false)}
-                      >
-                        Privacy Policy
-                      </p>
-                    </div>
-                  </Link>
-                  <Link to="/">
-                    <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-                 
-
-                      <p
-                        className="w-full flex items-center justify-center gap-3 text-red-600"
-                        onClick={() => setIsMenu(false)}
-                      >
-                        Log out
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div> */}
+           
             <NavLink
               className={({ isActive }) =>
                 `text-lg relative block text-lightModeTextColor hover:text-lightPrimary cursor-pointer after:scale-x-0 ${
                   isActive ? activeStyles : " "
                 }`
               }
-              // onClick={() => handleItemClick(1)}
               to="/token"
             >
               <span className="relative">
                 Token
-                {/* {selectedItem === 1 && (
-                                        <span className="border-b-2 ease-in-out border-lightPrimary animate-border-animation"></span>
-                                    )} */}
+              
               </span>
             </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                `text-lg relative block text-lightModeTextColor hover:text-lightPrimary cursor-pointer after:scale-x-0 ${
-                  isActive ? activeStyles : " "
-                }`
-              }
-              // onClick={() => handleItemClick(1)}
-              to="/contact-us"
-            >
-              <span className="relative">
-                Contact Us
-                {/* {selectedItem === 1 && (
-                                        <span className="border-b-2 ease-in-out border-lightPrimary animate-border-animation"></span>
-                                    )} */}
-              </span>
-            </NavLink>
+            
           </ul>
         </div>
         <div>
@@ -185,7 +86,6 @@ const Header = () => {
       {/* mobile */}
       <div className="z-50 md:hidden flex items-center justify-between w-full h-full ">
         <div className="flex items-center w-full justify-center">
-          {/* <img src={Logo} width="25px" className="mx-1" alt="logo" /> */}
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
               <span className="font-semibold">Relief</span>DAO
@@ -194,21 +94,7 @@ const Header = () => {
         </div>
 
         <div className="relative z-50">
-          {/* {isLoggedIn ? (
-            <img
-              src={ProfileImage}
-              className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer rounded-full"
-              alt="userprofile"
-              onClick={dropDownHandle}
-            />
-          ) : (
-            <img
-              src={MenuIcon}
-              className="w-10 h-10 drop-shadow-xl cursor-pointer"
-              alt="menu"
-              onClick={dropDownHandle}
-            />
-          )} */}
+         
 
           {isMenu && (
             <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0 z-50">

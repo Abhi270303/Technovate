@@ -1,5 +1,4 @@
 
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -48,7 +47,7 @@ module.exports = {
         "2xl": "1536px",
       },
       lineHeight: {
-        tight: '1.2', // Adjust the value as needed
+        tight: "1.2", // Adjust the value as needed
       },
       colors: {
         lightModeHeadingheadingColor: "#000000",
@@ -56,11 +55,11 @@ module.exports = {
         lighttextGray: "#929292",
         lightPrimary: "#FFFC10",
         lightCard: "#FFFFFF",
-        footerSubtitle: 'rgba(255, 255, 255, 0.55)',
-        lightBgBlue: 'rgba(13, 27, 207, 0.05)',
-        yellow: '#FFFC10',
-        darkBg: '#1d1d1d',
-        white: "#ffffff",
+        footerSubtitle: "rgba(255, 255, 255, 0.55)",
+        lightBgBlue: "rgba(13, 27, 207, 0.05)",
+        yellow: "#FFFC10",
+        darkBg: "#1d1d1d",white: "#ffffff"
+        
       },
     },
   },
