@@ -8,13 +8,13 @@ const Header = () => {
   const [visible] = useState(true);
   const navigate = useNavigate();
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const headerClasses = ` w-screen p-3 px-4 md:p-6 md:px-16  ${
+  const headerClasses = `bg-darkBg w-screen p-3 px-4 md:p-6 md:px-16  ${
     visible ? "" : "hidden"
   }`;
 
-  const dropDownHandle = () => {
-    setIsMenu(!isMenu);
-  };
+  // const dropDownHandle = () => {
+  //   setIsMenu(!isMenu);
+  // };
 
   const activeStyles =
     "text-lightPrimary after:block after:content-[''] after:absolute after:h-[2px] after:bg-lightPrimary after:w-full after:scale-x-100 after:transition after:duration-500";
@@ -27,7 +27,7 @@ const Header = () => {
           {/* <img src={Logo} width="30px" alt="logo" /> */}
           <Link to="/">
             <p className="text-lightModeTextColor text-2xl ">
-              <span className="font-semibold">Bit</span>Coin
+              <span className="font-semibold  text-lightPrimary">RELIEF</span>dao
             </p>
           </Link>
         </div>
@@ -51,17 +51,17 @@ const Header = () => {
                 }`
               }
               // onClick={() => handleItemClick(1)}
-              to="/connect-wallet"
+              to="/tfl"
             >
               <span className="relative">
-                Connect Wallet
+                TFL
                 {/* {selectedItem === 1 && (
                                         <span className="border-b-2 ease-in-out border-lightPrimary animate-border-animation"></span>
                                     )} */}
               </span>
             </NavLink>
-            <>
-              {/* <li
+            {/* <>
+              <li
                 className="flex gap-3 text-sm text-lightModeTextColor hover:text-lightPrimary cursor-pointer"
                 onClick={dropDownHandle}
               >
@@ -77,20 +77,20 @@ const Header = () => {
                   </div>
                 </div>
                 <img src={DownArrow} alt="drop_down_menu" />
-              </li> */}
-            </>
+              </li>
+            </> */}
 
-            <li
+            {/* <li
               className="flex gap-3 text-sm text-lightModeTextColor hover:text-lightPrimary cursor-pointer"
               onClick={dropDownHandle}
             >
               <img src={DownArrow} alt="drop_down_menu" />
-            </li>
-            <div className="">
+            </li> */}
+            {/* <div className="">
               {isMenu && (
                 <div className=" w-[200px] bg-lightCard drop-shadow-lg rounded-lg flex flex-col absolute top-20 right-14 py-2">
                   <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-                    {/* <img src={EditProfileIcon} className="pl-1" alt="logout_icon" /> */}
+                    
                     <Link
                       to="/user/info"
                       className="w-full flex items-center justify-center gap-3"
@@ -101,7 +101,7 @@ const Header = () => {
                   </div>
 
                   <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-                    {/* <img src={UserDashboard} className="pl-1" alt="logout_icon" /> */}
+            
                     <p
                       className="w-full flex items-center justify-center gap-3"
                       onClick={() => setIsMenu(false)}
@@ -112,7 +112,7 @@ const Header = () => {
 
                   <Link to="/policy">
                     <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-                      {/* <img src={PrivacyPolicyIcon} className="pl-1" alt="logout_icon" /> */}
+      
                       <p
                         className="w-full flex items-center justify-center gap-3"
                         onClick={() => setIsMenu(false)}
@@ -123,7 +123,7 @@ const Header = () => {
                   </Link>
                   <Link to="/">
                     <div className="flex px-4 py-2 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-lightModeTextColor">
-                      {/* <img src={LogOutIcon} className="pl-1" alt="logout_icon" /> */}
+                 
 
                       <p
                         className="w-full flex items-center justify-center gap-3 text-red-600"
@@ -135,21 +135,59 @@ const Header = () => {
                   </Link>
                 </div>
               )}
-            </div>
+            </div> */}
+            <NavLink
+              className={({ isActive }) =>
+                `text-lg relative block text-lightModeTextColor hover:text-lightPrimary cursor-pointer after:scale-x-0 ${
+                  isActive ? activeStyles : " "
+                }`
+              }
+              // onClick={() => handleItemClick(1)}
+              to="/token"
+            >
+              <span className="relative">
+                Token
+                {/* {selectedItem === 1 && (
+                                        <span className="border-b-2 ease-in-out border-lightPrimary animate-border-animation"></span>
+                                    )} */}
+              </span>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `text-lg relative block text-lightModeTextColor hover:text-lightPrimary cursor-pointer after:scale-x-0 ${
+                  isActive ? activeStyles : " "
+                }`
+              }
+              // onClick={() => handleItemClick(1)}
+              to="/contact-us"
+            >
+              <span className="relative">
+                Contact Us
+                {/* {selectedItem === 1 && (
+                                        <span className="border-b-2 ease-in-out border-lightPrimary animate-border-animation"></span>
+                                    )} */}
+              </span>
+            </NavLink>
           </ul>
         </div>
         <div>
-          nd
+          <ul>
+            <NavLink to="/secure-yourself">
+              <li className="rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
+                Secure Yourself
+              </li>
+            </NavLink>
+          </ul>
         </div>
       </div>
-gi
+
       {/* mobile */}
       <div className="z-50 md:hidden flex items-center justify-between w-full h-full ">
         <div className="flex items-center w-full justify-center">
           {/* <img src={Logo} width="25px" className="mx-1" alt="logo" /> */}
           <NavLink to={"/"}>
             <p className="text-lightModeTextColor text-xl ">
-              <span className="font-semibold">Bit</span>Coin
+              <span className="font-semibold">RELIEF</span>dao
             </p>
           </NavLink>
         </div>

@@ -1,8 +1,11 @@
 import React from 'react'
+import HeroComponent from '../components/HeroComponent'
 
 const HomePage = () => {
   return (
-    <div>Homepage</div>
+    <div className=' bg-darkBg text-lightModeTextColor'>
+        <HeroComponent />
+    </div>
   )
 }
 
