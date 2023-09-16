@@ -20,6 +20,26 @@ const SecureYourself = ({
   const [inputValue, setInputValue] = useState("");
   const [amount, setAmount] = useState("");
   const [recipient, setRecipient] = useState("");
+  const [allowanceAmount, setAllowanceAmount] = useState("");
+  const [allowAddress, setAllowAddress] = useState(null);
+
+  const fetchAllowance = async () => {
+    try {
+      // Call the contract function to get the allowance
+      const allowanceInWei = await contractMyToken.allowance(
+        signer.getAddress(),
+        allowAddress /* Recipient's address */
+      );
+
+      // Convert the allowance from Wei to Ether
+      const allowanceInEther = ethers.utils.formatEther(allowanceInWei);
+
+      // Update the state with the fetched allowance
+      setAllowanceAmount(allowanceInEther);
+    } catch (error) {
+      console.error("Error fetching allowance:", error);
+    }
+  };
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
@@ -67,6 +87,10 @@ const SecureYourself = ({
     setInputValue(event.target.value);
   };
 
+  const handleAddressChange = (event) => {
+    setAllowAddress(event.target.value);
+  };
+
   const handleTransfer = async (event) => {
     event.preventDefault();
     // You can perform actions with the amount and recipient here, e.g., submit a transaction.
@@ -80,7 +104,7 @@ const SecureYourself = ({
   return (
     <div className="md:pb-36 h-screen flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
       <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
-      <p className=" md:text-2xl font-semibold text-lg">User Info</p>
+        <p className=" md:text-2xl font-semibold text-lg">User Info</p>
 
         <p className=" md:text-xl text-lg">
           Token Name:{" "}
@@ -106,13 +130,10 @@ const SecureYourself = ({
         ) : (
           <p className="font-semibold text-lightPrimary">Loading balance...</p>
         )}
-
-        
       </div>
 
       <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
-
-      {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
+        {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
           <p>Your trust Address is : {trustAddress}</p>
         ) : (
           <div className="flex flex-col">
@@ -136,14 +157,16 @@ const SecureYourself = ({
               </button>
             </form>
           </div>
-        )}  
+        )}
       </div>
 
       <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
         <p className=" md:text-2xl font-semibold text-lg">Transfer Funds</p>
         <form onSubmit={handleTransfer}>
           <div className="form-group">
-            <label htmlFor="amount" className=" md:text-xl text-lg">Amount:</label>
+            <label htmlFor="amount" className=" md:text-xl text-lg">
+              Amount:
+            </label>
             <input
               className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
@@ -155,7 +178,9 @@ const SecureYourself = ({
             />
           </div>
           <div className="form-group">
-            <label htmlFor="recipient" className="md:text-xl text-lg">Recipient:</label>
+            <label htmlFor="recipient" className="md:text-xl text-lg">
+              Recipient:
+            </label>
             <input
               className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
@@ -166,8 +191,27 @@ const SecureYourself = ({
               required
             />
           </div>
-          <button className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full" type="submit">Transfer</button>
+          <button
+            className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
+            type="submit"
+          >
+            Transfer
+          </button>
         </form>
+      </div>
+
+      <div className="card">
+        <h3>Allowance Card</h3>
+        <div>
+          <label>Recipient Address:</label>
+          <input type="text" value={address} onChange={handleAddressChange} />
+        </div>
+        <button onClick={fetchAllowance}>Fetch Allowance</button>
+        {allowanceAmount && (
+          <div>
+            <p>Allowance Amount (ETH): {allowanceAmount}</p>
+          </div>
+        )}
       </div>
     </div>
   );
