@@ -48,7 +48,7 @@ function App() {
         setContractMyToken(contract1);
         setContractRelief(contract2);
         setProvider(provider);
-        console.log(contract1.address);
+        console.log();
       } else {
         alert("Wallet is not present");
       }
