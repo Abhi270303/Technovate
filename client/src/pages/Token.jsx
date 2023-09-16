@@ -2,90 +2,46 @@ import React from "react";
 
 const CryptoTable = () => {
   return (
-    <div>
-      <div className="grid grid-cols-4">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-      </div>
+<div class=" overflow-x-auto">
+  <table className="min-w-full text-white border-yellow">
+    <thead>
+      <tr>
+        <th class="px-8 py-10 text-left text-m font-medium uppercase tracking-wider">Address</th>
+        <th class="px-8 py-10 text-left text-m font-medium uppercase tracking-wider">Funds in user's wallet</th>
+        <th class="px-8 py-10 text-left text-m font-medium uppercase tracking-wider">Funds in DAO</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-yellow">
+      {/* <!-- Row 1 --> */}
+      <tr>
+        <td class="px-6 py-10 whitespace-nowrap">0x0C9751BD015584D77F1A4980B40E0DCA8F8B1659</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 1,275 USD</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 23,344 USD</td>
+      </tr>
+      {/* <!-- Row 2 --> */}
+      <tr>
+        <td class="px-6 py-10 whitespace-nowrap">0x7880E301FB704C98E7F15EE6216FAEC46965F82</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 3,467 USD</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 78,456 USD</td>
+      </tr>
+      {/* <!-- Row 3 --> */}
+      <tr>
+        <td class="px-6 py-10 whitespace-nowrap">0x9697C4D27C241BD427E4340A36A81E0761E306E9</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 52,278 USD</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 72,493 USD</td>
+      </tr>
+      {/* <!-- Row 4 --> */}
+      <tr>
+        <td class="px-6 py-10 whitespace-nowrap">0x2455161350842927BAEAEDD260E2AE6EA991C8E6</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 34,262 USD</td>
+        <td class="px-6 py-10 whitespace-nowrap">$ 10,077 USD</td>
+      </tr>
+      {/* <!-- Add more rows as needed --> */}
+    </tbody>
+  </table>
+</div>
 
-      <div className="m-10 h-screen flex items-center justify-center text-yellow">
-        <table className="min-w-full text-white border-yellow">
-          <thead>
-            <tr>
-              <th className="px-8 py-10 text-left text-m font-medium uppercase tracking-wider">
-                Address
-              </th>
-              <th className="px-8 py-10 text-left text-m font-medium uppercase tracking-wider">
-                Funds in user's wallet
-              </th>
-              <th className="px-8 py-10 text-left text-m font-medium uppercase tracking-wider">
-                Funds in DAO
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-yellow">
-            {/* Row 1 */}
-            <tr>
-              <td className="px-6 py-10 whitespace-nowrap">Bitcoin</td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                Bitcoin is an innovative payment system and a new kind of money.
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 233,544,092,111 USD
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 27,556,341,001 USD
-              </td>
-            </tr>
-            {/* Row 2 */}
-            <tr>
-              <td className="px-6 py-10 whitespace-nowrap">Ethereum</td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                Ethereum is the community-run technology powering the
-                cryptocurrency ether (ETH) and thousands of decentralized
-                applications.
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 78,145,725,085 USD
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 2,123,854,075 USD
-              </td>
-            </tr>
-            {/* Row 3 */}
-            <tr>
-              <td className="px-6 py-10 whitespace-nowrap">Tether</td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                Tether tokens are assets that move across the blockchain just as
-                easily as other digital currencies.
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 72,492,161,421 USD
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 51,116,487,015 USD
-              </td>
-            </tr>
-            {/* Row 4 */}
-            <tr>
-              <td className="px-6 py-10 whitespace-nowrap">Polkadot</td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                Parachain-to-parachain communication is now enabled with XCM.
-                Polkadot's vision of cross-chain interoperability starts here.
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 10,077,446,351 USD
-              </td>
-              <td className="px-6 py-10 whitespace-nowrap">
-                $ 681,300,745 USD
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  
   );
 };
 
