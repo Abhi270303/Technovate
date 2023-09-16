@@ -7,7 +7,7 @@ const SecureYourself = ({
   provider,
   contractMyToken,
   contractRelief,
-}) => {
+}) => {git
   const [balance, setBalance] = useState(null);
   const [address, setAddress] = useState("");
   const [nameToken, setNameToken] = useState("");
