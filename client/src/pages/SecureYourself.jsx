@@ -1,6 +1,6 @@
 import React from "react";
 
-const SecureYourself = (signer,account, provider, contractMyToken,contractRelief) => {
+const SecureYourself = ({signer,account, provider, contractMyToken,contractRelief}) => {
   console.log(account);
   console.log(provider);
   console.log(contractMyToken);

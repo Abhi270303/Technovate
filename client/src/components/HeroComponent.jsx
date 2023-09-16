@@ -25,14 +25,14 @@ const HeroComponent = () => {
             circumstances, ensuring that help is just a transaction away. Join
             us in making a difference and together, let's build hope, one
             transaction at a time.
-            <div>
-              <NavLink to="/secure-yourself">
-                <p className="mt-10 rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
-                  Secure Yourself
-                </p>
-              </NavLink>
-            </div>
           </p>
+          <div>
+            <NavLink to="/secure-yourself">
+              <p className="mt-10 rounded-full border border-lightPrimary py-3 px-9 text-lg text-lightModeTextColor hover:shadow-lg duration-100 transition-all ease-in-out cursor-pointer">
+                Secure Yourself
+              </p>
+            </NavLink>
+          </div>
         </div>
         <div className="flex-1 flex items-center relative md:h-[75%]  md:mt-0">
           {/* Image */}
