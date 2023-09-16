@@ -23,6 +23,26 @@ const SecureYourself = ({
   const [allowanceAmount, setAllowanceAmount] = useState("");
   const [allowAddress, setAllowAddress] = useState(null);
 
+<<<<<<< HEAD
+=======
+  const fetchAllowance = async () => {
+    try {
+      // Call the contract function to get the allowance
+      const allowanceInWei = await contractMyToken.allowance(
+        signer.getAddress(),
+        allowAddress /* Recipient's address */
+      );
+
+      // Convert the allowance from Wei to Ether
+      const allowanceInEther = ethers.utils.formatEther(allowanceInWei);
+
+      // Update the state with the fetched allowance
+      setAllowanceAmount(allowanceInEther);
+    } catch (error) {
+      console.error("Error fetching allowance:", error);
+    }
+  };
+>>>>>>> 488d0f7eca1ef386e056b54ee379586438035f75
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
@@ -93,6 +113,10 @@ const SecureYourself = ({
     setInputValue(event.target.value);
   };
 
+  const handleAddressChange = (event) => {
+    setAllowAddress(event.target.value);
+  };
+
   const handleTransfer = async (event) => {
     event.preventDefault();
     // You can perform actions with the amount and recipient here, e.g., submit a transaction.
@@ -104,8 +128,15 @@ const SecureYourself = ({
   };
 
   return (
+<<<<<<< HEAD
     <div className="md:pb-36 h-screen flex mt-16 justify-center w-full text-lightModeTextColor">
       <div className=" md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
+=======
+    <div className="md:pb-36 h-screen flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
+      <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
+        <p className=" md:text-2xl font-semibold text-lg">User Info</p>
+
+>>>>>>> 488d0f7eca1ef386e056b54ee379586438035f75
         <p className=" md:text-xl text-lg">
           Token Name:{" "}
           <span className="font-semibold text-lightPrimary">{nameToken}</span>
@@ -131,6 +162,7 @@ const SecureYourself = ({
           <p className="font-semibold text-lightPrimary">Loading balance...</p>
         )}
       </div>
+<<<<<<< HEAD
       {trustAddress && <p>Your trust Address is : {trustAddress}</p>}
       {!trustAddress && (
         <div>
@@ -138,6 +170,18 @@ const SecureYourself = ({
           <form onSubmit={addTrustWorthy}>
             <label>
               Enter something:
+=======
+
+      <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
+        {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
+          <p>Your trust Address is : {trustAddress}</p>
+        ) : (
+          <div className="flex flex-col">
+            <p className=" md:text-2xl text-lg mt-2">
+              Not added any Trustworthy
+            </p>
+            <form onSubmit={addTrustWorthy}>
+>>>>>>> 488d0f7eca1ef386e056b54ee379586438035f75
               <input
                 className="text-black"
                 type="text"
@@ -145,6 +189,7 @@ const SecureYourself = ({
                 onChange={handleInputChange}
                 placeholder="Type something..."
               />
+<<<<<<< HEAD
             </label>
             <button type="submit">Add Trust Worthy</button>
           </form>
@@ -155,6 +200,27 @@ const SecureYourself = ({
         <form onSubmit={handleTransfer}>
           <div className="form-group">
             <label htmlFor="amount">Amount:</label>
+=======
+
+              <button
+                type="submit"
+                className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
+              >
+                Add Trust Worthy
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+
+      <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
+        <p className=" md:text-2xl font-semibold text-lg">Transfer Funds</p>
+        <form onSubmit={handleTransfer}>
+          <div className="form-group">
+            <label htmlFor="amount" className=" md:text-xl text-lg">
+              Amount:
+            </label>
+>>>>>>> 488d0f7eca1ef386e056b54ee379586438035f75
             <input
               className="text-black"
               type="text"
@@ -166,7 +232,13 @@ const SecureYourself = ({
             />
           </div>
           <div className="form-group">
+<<<<<<< HEAD
             <label htmlFor="recipient">Recipient:</label>
+=======
+            <label htmlFor="recipient" className="md:text-xl text-lg">
+              Recipient:
+            </label>
+>>>>>>> 488d0f7eca1ef386e056b54ee379586438035f75
             <input
               className="text-black"
               type="text"
@@ -177,9 +249,21 @@ const SecureYourself = ({
               required
             />
           </div>
+<<<<<<< HEAD
           <button type="submit">Transfer</button>
         </form>
       </div>
+=======
+          <button
+            className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
+            type="submit"
+          >
+            Transfer
+          </button>
+        </form>
+      </div>
+
+>>>>>>> 488d0f7eca1ef386e056b54ee379586438035f75
       <div className="card">
         <h3>Allowance Card</h3>
         <div>
