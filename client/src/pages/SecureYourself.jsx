@@ -11,13 +11,13 @@ const SecureYourself = ({
   provider,
   contractMyToken,
   contractRelief,
-}) => {git
+}) => {
   const [balance, setBalance] = useState(null);
   const [address, setAddress] = useState("");
   const [nameToken, setNameToken] = useState("");
   const [symbolToken, setSymbolToken] = useState("");
   const [trustAddress, setTrustAddress] = useState();
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   useEffect(() => {
     async function fetchBalance() {
       try {
@@ -41,26 +41,23 @@ const SecureYourself = ({
     }
   }, [signer]);
 
-  const permit = async()=>{
-    
-  }
+  const permit = async () => {};
 
-  const yourTrustWorthyParty=async()=>{
+  const yourTrustWorthyParty = async () => {
     console.log(signer.getAddress());
     const address = await contractMyToken.brother(signer.getAddress());
     setTrustAddress(address);
-  }
-  const addTrustWorthy=async(event)=>{
+  };
+  const addTrustWorthy = async (event) => {
     event.preventDefault();
     await contractMyToken.addbrother(inputValue);
-  }
+  };
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
   return (
-
     <div className="md:pb-36 h-screen flex mt-16 justify-center w-full text-lightModeTextColor">
       <div className=" md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
         <p className=" md:text-xl text-lg">
@@ -87,28 +84,27 @@ const SecureYourself = ({
         ) : (
           <p className="font-semibold text-lightPrimary">Loading balance...</p>
         )}
-      </div>{
-        trustAddress && <p>Your trust Address is : {trustAddress}</p>
 
-      }
-      {!trustAddress &&
-       <div>
-      <h2>Input Form</h2>
-      <form onSubmit={addTrustWorthy}>
-        <label>
-          Enter something:
-          <input
-          className="text-black"
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Type something..."
-          />
-        </label>
-        <button type="submit">Add Trust Worthy</button>
-      </form>
-    </div>
-}
+        {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
+          <p>Your trust Address is : {trustAddress}</p>
+        ) : (
+          <div className="flex flex-col">
+            <p className=" md:text-2xl text-lg mt-2">Not added any Trustworthy</p>
+            <form onSubmit={addTrustWorthy}>
+              
+                <input
+                  className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  placeholder="Enter Trustworthy addressing"
+                />
+           
+              <button type="submit" className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg">Add Trust Worthy</button>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
