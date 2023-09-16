@@ -18,6 +18,16 @@ const SecureYourself = ({
   const [symbolToken, setSymbolToken] = useState("");
   const [trustAddress, setTrustAddress] = useState();
   const [inputValue, setInputValue] = useState("");
+  const [amount, setAmount] = useState("");
+  const [recipient, setRecipient] = useState("");
+
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+  };
+
+  const handleRecipientChange = (event) => {
+    setRecipient(event.target.value);
+  };
   useEffect(() => {
     async function fetchBalance() {
       try {
@@ -57,6 +67,16 @@ const SecureYourself = ({
     setInputValue(event.target.value);
   };
 
+  const handleTransfer = async (event) => {
+    event.preventDefault();
+    // You can perform actions with the amount and recipient here, e.g., submit a transaction.
+    const parsedAmount = ethers.utils.parseEther(amount);
+    await contractMyToken.transfer(recipient, parsedAmount);
+    // Reset the form
+    setAmount("");
+    setRecipient("");
+  };
+
   return (
     <div className="md:pb-36 h-screen flex mt-16 justify-center w-full text-lightModeTextColor">
       <div className=" md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
@@ -89,21 +109,57 @@ const SecureYourself = ({
           <p>Your trust Address is : {trustAddress}</p>
         ) : (
           <div className="flex flex-col">
-            <p className=" md:text-2xl text-lg mt-2">Not added any Trustworthy</p>
+            <p className=" md:text-2xl text-lg mt-2">
+              Not added any Trustworthy
+            </p>
             <form onSubmit={addTrustWorthy}>
-              
-                <input
-                  className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
-                  type="text"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                  placeholder="Enter Trustworthy addressing"
-                />
-           
-              <button type="submit" className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg">Add Trust Worthy</button>
+              <input
+                className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder="Enter Trustworthy addressing"
+              />
+
+              <button
+                type="submit"
+                className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg"
+              >
+                Add Trust Worthy
+              </button>
             </form>
           </div>
         )}
+      </div>
+      <div className="card">
+        <h2>Transfer Funds</h2>
+        <form onSubmit={handleTransfer}>
+          <div className="form-group">
+            <label htmlFor="amount">Amount:</label>
+            <input
+              className="text-black"
+              type="text"
+              id="amount"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="recipient">Recipient:</label>
+            <input
+              className="text-black"
+              type="text"
+              id="recipient"
+              value={recipient}
+              onChange={handleRecipientChange}
+              placeholder="Enter recipient's address"
+              required
+            />
+          </div>
+          <button type="submit">Transfer</button>
+        </form>
       </div>
     </div>
   );
