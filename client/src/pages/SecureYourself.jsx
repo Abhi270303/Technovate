@@ -22,15 +22,15 @@ const SecureYourself = ({
   const [recipient, setRecipient] = useState("");
   const [allowanceAmount, setAllowanceAmount] = useState("");
   const [allowAddress, setAllowAddress] = useState(null);
-  const [allowFunds, setAllowFunds] = useState('');
-  const [aprooveAddress, setAprooveAddress] = useState('');
+  const [allowFunds, setAllowFunds] = useState("");
+  const [aprooveAddress, setAprooveAddress] = useState("");
 
   const fetchAllowance = async () => {
     try {
       // Call the contract function to get the allowance
-      const address = await  signer.getAddress();
+      const address = await signer.getAddress();
       const allowanceInWei = await contractMyToken.allowance(
-       address,
+        address,
         allowAddress /* Recipient's address */
       );
 
@@ -74,10 +74,19 @@ const SecureYourself = ({
     }
   }, [signer]);
 
-  const yourTrustWorthyParty = async() => {
-    const address = await contractMyToken.brother(signer.getAddress());
-    setTrustAddress(address);
+  const yourTrustWorthyParty = async () => {
+    try {
+      if (contractMyToken && signer) {
+        const address = await contractMyToken.brother(signer.getAddress());
+        setTrustAddress(address);
+      } else {
+        console.error("contractMyToken or signer is not defined.");
+      }
+    } catch (error) {
+      console.error("Error in yourTrustWorthyParty:", error);
+    }
   };
+
   const addTrustWorthy = async (event) => {
     event.preventDefault();
     await contractMyToken.addbrother(inputValue);
@@ -101,22 +110,22 @@ const SecureYourself = ({
     setRecipient("");
   };
 
-  const handleAmountApproveChange = async(event)=>{
+  const handleAmountApproveChange = async (event) => {
     setAllowFunds(event.target.value);
-  }
+  };
 
-  const handleApproveAddressChange = async(event)=>{
+  const handleApproveAddressChange = async (event) => {
     setAprooveAddress(event.target.value);
-  }
+  };
 
-  const permit = async() => {};
-  const TransferFrom = async ()=>{}
+  const permit = async () => {};
+  const TransferFrom = async () => {};
 
-  const onApprove = async()=>{
+  const onApprove = async () => {
     const parsedValue = ethers.utils.parseEther(allowFunds);
     const tx = await contractMyToken.approve(aprooveAddress, parsedValue);
     await tx.wait();
-  } 
+  };
 
   return (
     <div className="md:pb-36 flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
@@ -246,7 +255,7 @@ const SecureYourself = ({
           </div>
         )}
       </div>
-{/*
+      {/*
 
 
       <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
@@ -288,7 +297,7 @@ const SecureYourself = ({
           </button>
         </form>
       </div>
-        */ }
+        */}
     </div>
   );
 };

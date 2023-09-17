@@ -66,6 +66,16 @@ const Header = (account) => {
             >
               <span className="relative">Token</span>
             </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `text-lg relative block text-lightModeTextColor hover:text-lightPrimary cursor-pointer after:scale-x-0 ${
+                  isActive ? activeStyles : " "
+                }`
+              }
+              to="/dav-contract"
+            >
+              <span className="relative">Dav Contract</span>
+            </NavLink>
           </ul>
         </div>
 
@@ -119,7 +129,13 @@ const Header = (account) => {
                   className="text-base text-lightModeTextColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
                   onClick={() => setIsMenu(false)}
                 >
-                  <NavLink to={"token"}>Token</NavLink>
+                  <NavLink to={"/token"}>Token</NavLink>
+                </li>
+                <li
+                  className="text-base text-lightModeTextColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
+                  onClick={() => setIsMenu(false)}
+                >
+                  <NavLink to={"/dav-contract"}>Dav Contract</NavLink>
                 </li>
               </ul>
 
