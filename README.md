@@ -10,8 +10,8 @@
 ![Alt text](https://github.com/TechieeGeeeks/Technovate/blob/main/screenshots/5.png?raw=true)
 
 ## Mobile
-![Alt text](https://github.com/TechieeGeeeks/Technovate/blob/main/screenshots/3.png?raw=true)
-![Alt text](![image](https://github.com/TechieeGeeeks/Technovate/assets/89719144/04a225a0-6538-4789-bdda-4bc77cfa40ef)
+(![image](https://github.com/TechieeGeeeks/Technovate/blob/main/screenshots/3.png?raw=true)
+(![image](https://github.com/TechieeGeeeks/Technovate/assets/89719144/04a225a0-6538-4789-bdda-4bc77cfa40ef)
 
 # Table of Contents
 
