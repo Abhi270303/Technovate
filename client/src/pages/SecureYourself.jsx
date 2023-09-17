@@ -151,7 +151,7 @@ const SecureYourself = ({
 
       <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
         {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
-          <p className=" md:text-2xl font-semibold text-lg w-full text-center mb-5">
+          <p className=" md:text-2xl font-semibold text-lg w-full text-center mb-5 break-all">
             Your trust Address is : {trustAddress}
           </p>
         ) : (
