@@ -2,7 +2,7 @@ import React from 'react'
 
 const DavContracts = () => {
   return (
-    <div>DavContracts</div>
+    <div className='text-lightModeTextColor'>DavContracts</div>
   )
 }
 

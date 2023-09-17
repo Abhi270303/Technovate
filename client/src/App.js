@@ -24,7 +24,7 @@ function App() {
   const [contractMyToken, setContractMyToken] = useState(null);
   const [provider, setProvider] = useState(null);
   const [contractRelief, setContractRelief] = useState(null);
-  const [signer,setSigner] = useState(null);
+  const [signer, setSigner] = useState(null);
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const loadProvider = async () => {
@@ -60,14 +60,24 @@ function App() {
       <Header account={account} />
       <div className=" p-3 px-4 md:p-6 md:px-16 b">
         <Routes>
-          <Route path="/*" element={<HomePage  />} />
-          <Route path="/secure-yourself" element={<SecureYourself  signer={signer} account={account} provider={provider} contractMyToken={contractMyToken} contractRelief={contractRelief}/>} />
+          <Route path="/*" element={<HomePage />} />
+          <Route
+            path="/secure-yourself"
+            element={
+              <SecureYourself
+                signer={signer}
+                account={account}
+                provider={provider}
+                contractMyToken={contractMyToken}
+                contractRelief={contractRelief}
+              />
+            }
+          />
           <Route path="/tfl" element={<TFL />} />
           <Route path="/token" element={<Token />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
           <Route path="/dav-contract" element={<DavContracts />} />
-
         </Routes>
       </div>
       <Footer />
