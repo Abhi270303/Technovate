@@ -6,6 +6,9 @@
 # Project Link:
 https://youtu.be/O4d9MqKjEFo
 
+# PPT:
+https://github.com/TechieeGeeeks/Technovate/blob/main/presentation/Copy%20of%20Technovate.pptx
+
 
 # Screenshots
 ## Desktop
