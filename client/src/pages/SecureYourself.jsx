@@ -134,13 +134,15 @@ const SecureYourself = ({
 
       <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
         {trustAddress !== "0x0000000000000000000000000000000000000000" ? (
-          <p>Your trust Address is : {trustAddress}</p>
+          <p className=" md:text-2xl font-semibold text-lg w-full text-center mb-5">
+            Your trust Address is : {trustAddress}
+          </p>
         ) : (
-          <div className="flex flex-col">
-            <p className=" md:text-2xl text-lg mt-2">
+          <div className="flex flex-col w-full">
+            <p className=" md:text-2xl font-semibold text-lg w-full text-center mb-5">
               Not added any Trustworthy
             </p>
-            <form onSubmit={addTrustWorthy}>
+            <form onSubmit={addTrustWorthy} className="w-full">
               <input
                 className="text-black w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
                 type="text"
@@ -160,11 +162,13 @@ const SecureYourself = ({
         )}
       </div>
 
-      <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
-        <p className=" md:text-2xl font-semibold text-lg">Transfer Funds</p>
-        <form onSubmit={handleTransfer}>
-          <div className="form-group">
-            <label htmlFor="amount" className=" md:text-xl text-lg">
+      <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center text-center">
+        <p className=" md:text-2xl font-semibold text-lg w-full text-center mb-5">
+          Transfer Funds
+        </p>
+        <form onSubmit={handleTransfer} className="w-full">
+          <div className="form-group w-full">
+            <label htmlFor="amount" className="md:mt-12 md:text-xl text-lg">
               Amount:
             </label>
             <input
@@ -177,7 +181,7 @@ const SecureYourself = ({
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group md:mt-4">
             <label htmlFor="recipient" className="md:text-xl text-lg">
               Recipient:
             </label>
@@ -201,17 +205,24 @@ const SecureYourself = ({
       </div>
 
       <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-cente mb-25">
-        <p className=" md:text-2xl font-semibold text-lg">Allowance Card</p>
-        <div>
-          <label className="md:text-xl text-lg md:mt-2 w-full">Recipient Address:</label>
-          <input
-            type="text"
-            value={allowAddress}
-            onChange={handleAddressChange}
-            className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
-          />
-        </div>
-        <button onClick={fetchAllowance} className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full">Fetch Allowance</button>
+        <p className=" md:text-2xl font-semibold text-lg w-full text-center ">
+          Allowance
+        </p>
+        <label className="md:text-lg text-lg md:mt-6 w-full text-center md:mb-4">
+          Recipient Address:
+        </label>
+        <input
+          type="text"
+          value={allowAddress}
+          onChange={handleAddressChange}
+          className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+        />
+        <button
+          onClick={fetchAllowance}
+          className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
+        >
+          Fetch Allowance
+        </button>
         {allowanceAmount && (
           <div>
             <p>Allowance Amount (ETH): {allowanceAmount}</p>
