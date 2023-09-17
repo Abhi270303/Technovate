@@ -293,7 +293,7 @@ export const MyTokenABI = [
 ]
 
 
-export const MyTokenContractAddress = "0xc849dE8452d9cA8ADd1cEF626BCD47Bc25c07BdE";
+export const MyTokenContractAddress = "0xaA02C40770f4BC3b00045bc710626D9f5A1BAb1f";
 
 export const ReliefDaoABI =[
 	{
@@ -320,6 +320,11 @@ export const ReliefDaoABI =[
 				"internalType": "uint256",
 				"name": "amount",
 				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "holder",
+				"type": "address"
 			}
 		],
 		"name": "deposit",
@@ -449,5 +454,5 @@ export const ReliefDaoABI =[
 		"type": "function"
 	}
 ]
-export const ReliefDaoContractAddress="0x713A62D6240b2E94618Dd2e6882e00D120f5e03c";
+export const ReliefDaoContractAddress="0xE7d530E70b95eD3dF023654788D92432fCaa6D4C";
 

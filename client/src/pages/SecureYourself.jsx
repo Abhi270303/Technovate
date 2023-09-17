@@ -165,6 +165,46 @@ const SecureYourself = ({
     }
   };
 
+  const [holder, setholder] = useState("");
+  const [permitAmount, setPermitAmount] = useState("");
+  const [depositAmount, setDepositAmount] = useState("");
+
+  const handleholderChange = (event) => {
+    setholder(event.target.value);
+  };
+
+  const handlePermitAmountChange = (event) => {
+    setPermitAmount(event.target.value);
+  };
+
+  const handleDepositAmountChange = (event) => {
+    setDepositAmount(event.target.value);
+  };
+
+  const handlePermit = async () => {
+    try {
+      const parsedAmount = ethers.utils.parseEther(permitAmount);
+      await contractMyToken.permit(holder, ReliefDaoContractAddress, parsedAmount);
+      // Optionally, handle success here
+      console.log("Permit successful");
+    } catch (error) {
+      console.error("Error permitting funds:", error);
+      // Optionally, handle errors here
+    }
+  };
+
+  const handleDeposit = async () => {
+    try {
+      const parsedAmount = ethers.utils.parseEther(depositAmount);
+      await contractRelief.deposit(parsedAmount,holder);
+      // Optionally, handle success here
+      console.log("Deposit successful");
+    } catch (error) {
+      console.error("Error depositing funds:", error);
+      // Optionally, handle errors here
+    }
+  };
+
   return (
     <div className="md:pb-36 flex flex-col gap-4 items-center mt-16 justify-center w-full text-lightModeTextColor">
       <div className=" md:w-1/2 w-[85%] rounded-lg  border md:p-16 p-4 flex flex-col items-start justify-center">
@@ -187,7 +227,7 @@ const SecureYourself = ({
         {balance !== null ? (
           <p className=" md:text-xl text-lg">
             Your Total Balance:{" "}
-            <span className="font-semibold text-lightPrimary">
+            <span className="font-semibold text-lightPrimary break-all">
               {ethers.utils.formatEther(balance)}
             </span>
           </p>
@@ -332,6 +372,80 @@ const SecureYourself = ({
           </button>
         </form>
       </div>
+
+      <div className="md:w-1/2 w-[85%] rounded-lg border md:p-16 p-4 flex flex-col items-start justify-center">
+      <p className="md:text-2xl font-semibold text-lg">Permit and Deposit</p>
+
+      <div className="form-group">
+        <label htmlFor="holder" className="md:text-xl text-lg">
+          Holder whos spend you wanna use:
+        </label>
+        <input
+          className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+          type="text"
+          id="holder"
+          value={holder}
+          onChange={handleholderChange}
+          placeholder="Enter spender's address"
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="permitAmount" className="md:text-xl text-lg">
+          Permit Amount:
+        </label>
+        <input
+          className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+          type="text"
+          id="permitAmount"
+          value={permitAmount}
+          onChange={handlePermitAmountChange}
+          placeholder="Enter amount"
+          required
+        />
+      </div>
+
+      <button
+        className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
+        onClick={handlePermit}
+      >
+        Permit
+      </button>
+
+      <div className="form-group mt-4">
+        <label htmlFor="depositAmount" className="md:text-xl text-lg">
+          Deposit Amount:
+        </label>
+        <input
+          className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+          type="text"
+          id="depositAmount"
+          value={depositAmount}
+          onChange={handleDepositAmountChange}
+          placeholder="Enter amount"
+          required
+        /><label htmlFor="depositAmount" className="md:text-xl text-lg">
+        holder:
+      </label>
+        <input
+          className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
+          type="text"
+          id="holder"
+          value={holder}
+          onChange={handleholderChange}
+          placeholder="Enter spender's address"
+          required
+        />
+      </div>
+
+      <button
+        className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
+        onClick={handleDeposit}
+      >
+        Deposit
+      </button>
+    </div>
     </div>
   );
 };
