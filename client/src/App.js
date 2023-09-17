@@ -10,6 +10,7 @@ import ContactUs from "./pages/ContactUs";
 import SecureYourself from "./pages/SecureYourself";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
+import DavContracts from "./pages/DavContracts";
 const { ethers } = require("ethers");
 const {
   MyTokenABI,
@@ -65,6 +66,8 @@ function App() {
           <Route path="/token" element={<Token />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/connect-wallet" element={<ConnectWallet />} />
+          <Route path="/dav-contract" element={<DavContracts />} />
+
         </Routes>
       </div>
       <Footer />

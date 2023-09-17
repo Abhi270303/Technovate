@@ -22,15 +22,40 @@ const SecureYourself = ({
   const [recipient, setRecipient] = useState("");
   const [allowanceAmount, setAllowanceAmount] = useState("");
   const [allowAddress, setAllowAddress] = useState(null);
-  const [allowFunds, setAllowFunds] = useState("");
-  const [aprooveAddress, setAprooveAddress] = useState("");
+  const [approvalAmount, setApprovalAmount] = useState("");
+  const [approvalRecipient, setApprovalRecipient] = useState("");
 
+  const handleApprovalAmountChange = (event) => {
+    setApprovalAmount(event.target.value);
+  };
+
+  const handleApprovalRecipientChange = (event) => {
+    setApprovalRecipient(event.target.value);
+  };
+
+  const handleApproval = async (event) => {
+    event.preventDefault();
+
+    try {
+      const parsedApprovalAmount = ethers.utils.parseEther(approvalAmount);
+      const tx = await contractMyToken.approve(
+        approvalRecipient,
+        parsedApprovalAmount
+      );
+      await tx.wait();
+      // Optionally, you can handle success here
+      console.log("Approval successful");
+    } catch (error) {
+      console.error("Error approving funds:", error);
+      // Optionally, you can handle errors here
+    }
+  };
   const fetchAllowance = async () => {
     try {
+      const address5 = await signer.getAddress();
       // Call the contract function to get the allowance
-      const address = await signer.getAddress();
       const allowanceInWei = await contractMyToken.allowance(
-        address,
+        address5,
         allowAddress /* Recipient's address */
       );
 
@@ -51,6 +76,7 @@ const SecureYourself = ({
   const handleRecipientChange = (event) => {
     setRecipient(event.target.value);
   };
+
   useEffect(() => {
     async function fetchBalance() {
       try {
@@ -89,7 +115,11 @@ const SecureYourself = ({
 
   const addTrustWorthy = async (event) => {
     event.preventDefault();
-    await contractMyToken.addbrother(inputValue);
+    try {
+      await contractMyToken.addbrother(inputValue);
+    } catch (error) {
+      console.error("Error adding Trust Worthy:", error);
+    }
   };
 
   const handleInputChange = (event) => {
@@ -102,29 +132,37 @@ const SecureYourself = ({
 
   const handleTransfer = async (event) => {
     event.preventDefault();
-    // You can perform actions with the amount and recipient here, e.g., submit a transaction.
-    const parsedAmount = ethers.utils.parseEther(amount);
-    await contractMyToken.transfer(recipient, parsedAmount);
-    // Reset the form
-    setAmount("");
-    setRecipient("");
+    try {
+      // You can perform actions with the amount and recipient here, e.g., submit a transaction.
+      const parsedAmount = ethers.utils.parseEther(amount);
+      await contractMyToken.transfer(recipient, parsedAmount);
+      // Reset the form
+      setAmount("");
+      setRecipient("");
+    } catch (error) {
+      console.error("Error transferring funds:", error);
+    }
   };
 
   const handleAmountApproveChange = async (event) => {
-    setAllowFunds(event.target.value);
+    setApprovalAmount(event.target.value);
   };
 
   const handleApproveAddressChange = async (event) => {
-    setAprooveAddress(event.target.value);
+    setApprovalRecipient(event.target.value);
   };
 
   const permit = async () => {};
   const TransferFrom = async () => {};
 
   const onApprove = async () => {
-    const parsedValue = ethers.utils.parseEther(allowFunds);
-    const tx = await contractMyToken.approve(aprooveAddress, parsedValue);
-    await tx.wait();
+    try {
+      const parsedValue = ethers.utils.parseEther(approvalAmount);
+      const tx = await contractMyToken.approve(approvalRecipient, parsedValue);
+      await tx.wait();
+    } catch (error) {
+      console.error("Error approving funds:", error);
+    }
   };
 
   return (
@@ -255,36 +293,33 @@ const SecureYourself = ({
           </div>
         )}
       </div>
-      {/*
-
-
       <div className="md:w-1/2 w-[85%] rounded-lg h-1/2 border md:p-16 p-4 flex flex-col items-start justify-center">
-        <p className=" md:text-2xl font-semibold text-lg">Approve Funds</p>
-        <form onSubmit={onApprove}>
+        <p className="md:text-2xl font-semibold text-lg">Approve Funds</p>
+        <form onSubmit={handleApproval}>
           <div className="form-group">
-            <label htmlFor="amount" className=" md:text-xl text-lg">
+            <label htmlFor="approvalAmount" className="md:text-xl text-lg">
               Amount:
             </label>
             <input
               className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
-              id="amount"
-              value={allowFunds}
-              onChange={handleAmountApproveChange}
+              id="approvalAmount"
+              value={approvalAmount}
+              onChange={handleApprovalAmountChange}
               placeholder="Enter amount"
               required
             />
           </div>
           <div className="form-group">
-            <label htmlFor="recipient" className="md:text-xl text-lg">
+            <label htmlFor="approvalRecipient" className="md:text-xl text-lg">
               Recipient:
             </label>
             <input
               className="text-lightModeTextColor w-full p-3 rounded-lg bg-transparent border border-lightPrimary"
               type="text"
-              id="recipient"
-              value={aprooveAddress}
-              onChange={handleApproveAddressChange}
+              id="approvalRecipient"
+              value={approvalRecipient}
+              onChange={handleApprovalRecipientChange}
               placeholder="Enter recipient's address"
               required
             />
@@ -293,11 +328,10 @@ const SecureYourself = ({
             className="p-4 bg-lightPrimary rounded-lg mt-2 text-darkBg w-full"
             type="submit"
           >
-            Transfer
+            Approve
           </button>
         </form>
       </div>
-        */}
     </div>
   );
 };
